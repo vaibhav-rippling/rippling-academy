@@ -23,5 +23,5 @@ html body {
 }
 
 div.circle:hover {
-	background: rgba(255, 0, 0, 0);
+	background: rgba(255, 0, 0, 0) !important;
 }
