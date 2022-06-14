@@ -1,0 +1,27 @@
+html body {
+	margin: 0;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	background-image: url("Rippling_Logo.png");
+	background-size: cover;
+	position: fixed;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	direction: row;
+	flex-wrap: wrap;
+}
+
+.circle {
+	width: 33.33%;
+	height: 33.33%;
+	border-radius: 50%;
+	background: red;
+}
+
+div.circle:hover {
+	background: rgba(255, 0, 0, 0);
+}
