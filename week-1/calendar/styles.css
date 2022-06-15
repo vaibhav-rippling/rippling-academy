@@ -22,7 +22,7 @@ html body {
 	justify-content: space-between;
 }
 
-.heading {
+#heading {
 	padding-left: 20px;
 }
 
@@ -73,7 +73,7 @@ tbody tr {
 }
 
 th, td {
-	background-color: #96D4D4;
+	background-color: #0082d6;
 	width: 12.5%;
 	height: 100%;
 	display: flex;
