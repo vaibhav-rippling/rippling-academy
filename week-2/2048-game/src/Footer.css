@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    color: #776e65;
+}
