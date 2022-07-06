@@ -1,0 +1,29 @@
+.navbar-container {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    display: flex;
+}
+
+.yt-logo-img {
+    width: 150px;
+    height: 60px;
+}
+
+.yt-logo-img:hover {
+    width: 160px;
+    height: 65px;
+}
+
+.yt-logo {
+    width: 25%;
+    padding-left: 40px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+}
+
+.search-div {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
