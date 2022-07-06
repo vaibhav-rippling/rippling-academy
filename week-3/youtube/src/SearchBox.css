@@ -1,0 +1,8 @@
+.searchBox-container {
+    width: 100%;
+}
+
+#searchBox {
+    width: 50%;
+    height: 25px;
+}
