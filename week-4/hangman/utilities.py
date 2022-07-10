@@ -11,7 +11,7 @@ def get_random_line_from_file(filepath: str) -> str:
 
 def word_masker(word: str, move: str = None, prev_mask: str = None) -> str:
     word_len = len(word)
-    if prev_mask is None and move is None:
+    if prev_mask is None or move is None:
         return HANGMAN_LETTER_MASK * word_len
     new_mask = ''
     for index in range(word_len):

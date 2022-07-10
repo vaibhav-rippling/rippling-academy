@@ -1,7 +1,7 @@
 import validator
 from game import Game
-from player import Computer, Human
-from typing import Tuple
+from player import Computer, Human, Player
+from typing import Tuple, List
 from utilities import *
 import random
 
@@ -14,14 +14,16 @@ class Hangman(Game):
         self.game_over = False
         self.left_attempts = max_attempts
         self.hint_enabled = hint_enabled
-        self.prev_moves = []
+        self.prev_moves: List[str] = []
         self.word = ''
         self.word_on_screen = ''
         self.hint_taken = False
         if player == PLAYER_COMPUTER:
-            self.player, self.params = Computer(), HANGMAN_COMPUTER_PARAMS
+            self.player: Player = Computer()
+            self.params = HANGMAN_COMPUTER_PARAMS
         elif player == PLAYER_HUMAN:
-            self.player, self.params = Human(), HANGMAN_HUMAN_PARAMS
+            self.player = Human()
+            self.params = HANGMAN_HUMAN_PARAMS
         else:
             raise Exception(UNKNOWN_PLAYER_ID_MSG)
 

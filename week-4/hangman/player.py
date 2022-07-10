@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 import random
 from string import ascii_uppercase
 from constants import *
-from typing import Dict
+from typing import Dict, List
 
 
 class Player(ABC):
@@ -13,7 +13,7 @@ class Player(ABC):
 
 class Computer(Player):
     def __init__(self) -> None:
-        self.prev_moves = []
+        self.prev_moves: List[str] = []
 
     def hangman(self) -> str:
         if len(self.prev_moves) == HANGMAN_MAX_CHARACTERS:
