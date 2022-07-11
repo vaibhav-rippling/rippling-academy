@@ -68,7 +68,7 @@ class Hangman(Game):
     def handle_hint(self) -> str:
         if not self.hint_enabled:
             return HANGMAN_HINT_DISABLED_ERROR_MSG
-        elif self.hints_left <= 0:
+        elif not self.hints_left:
             return HANGMAN_NO_HINTS_LEFT_ERROR_MSG
         else:
             self.hints_left -= 1
