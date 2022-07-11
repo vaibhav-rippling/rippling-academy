@@ -10,14 +10,14 @@ class Hangman(Game):
     def validator(self, move: str) -> bool:
         return validator.hangman(move, self.prev_moves)
 
-    def __init__(self, max_attempts: int, hint_enabled: bool, player: str) -> None:
+    def __init__(self, max_attempts: int, hint_enabled: bool, hints_left: int, player: str) -> None:
         self.game_over = False
         self.left_attempts = max_attempts
         self.hint_enabled = hint_enabled
         self.prev_moves: List[str] = []
         self.word = ''
         self.word_on_screen = ''
-        self.hint_taken = False
+        self.hints_left = hints_left if hint_enabled else 0
         if player == PLAYER_COMPUTER:
             self.player: Player = Computer()
             self.params = HANGMAN_COMPUTER_PARAMS
@@ -49,7 +49,10 @@ class Hangman(Game):
         new_mask = word_masker(self.word, move, self.word_on_screen)
         if new_mask == self.word_on_screen:
             self.left_attempts -= 1
-            return self.game_lost() if not self.left_attempts else get_incorrect_guess_msg(self.left_attempts, new_mask)
+            if not self.left_attempts:
+                return self.game_lost()
+            else:
+                return get_incorrect_guess_msg(self.left_attempts, new_mask, self.hint_enabled, self.hints_left)
         else:
             self.word_on_screen = new_mask
             return self.game_won() if self.word_on_screen == self.word else hangman_formatter(self.word_on_screen)
@@ -65,10 +68,10 @@ class Hangman(Game):
     def handle_hint(self) -> str:
         if not self.hint_enabled:
             return HANGMAN_HINT_DISABLED_ERROR_MSG
-        elif self.hint_taken:
-            return HANGMAN_HINT_TAKEN_ERROR_MSG
+        elif self.hints_left <= 0:
+            return HANGMAN_NO_HINTS_LEFT_ERROR_MSG
         else:
-            self.hint_taken = True
+            self.hints_left -= 1
             word_len = len(self.word)
             masked_indices = []
             for index in range(word_len):

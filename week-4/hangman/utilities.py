@@ -39,5 +39,6 @@ def get_new_mask_after_hint(prev_mask: str, unmasked_index: int, revealed_char: 
     return prev_mask[:unmasked_index] + revealed_char + prev_mask[unmasked_index + 1:]
 
 
-def get_incorrect_guess_msg(left_attempts: int, mask: str) -> str:
-    return HANGMAN_INCORRECT_GUESS_MESSAGE.format(left_attempts) + '\n' + hangman_formatter(mask)
+def get_incorrect_guess_msg(left_attempts: int, mask: str, hints_enabled: bool, hints_left: int) -> str:
+    hints_msg = '\n' + HANGMAN_HINTS_LEFT_MESSAGE.format(hints_left) if hints_enabled else ''
+    return HANGMAN_INCORRECT_GUESS_MESSAGE.format(left_attempts) + '\n' + hangman_formatter(mask) + hints_msg
